@@ -3,18 +3,27 @@
 
 {% block content %}
 
-<h1>Ingresar</h1>
+<main class="container">
 
-{{error}}
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+    
+            <form action="/signin/" method="POST">
+            
+                <h1>Ingresar</h1>
+                
+                {{error}}
+            
+                {% csrf_token %}
+            
+                {{form.as_p}}
+            
+                <button>
+                    Ingresar
+                </button>
+            </form>
+        </div>
+    </div>
 
-<form action="/signin/" method="POST">
-
-    {% csrf_token %}
-
-    {{form.as_p}}
-
-    <button>
-        Ingresar
-    </button>
-</form>
+</main>
 {% endblock  %}

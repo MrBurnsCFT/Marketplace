@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from .forms import TaskForm
 from .models import Task
@@ -37,10 +38,12 @@ def signup(request):
             'form': UserCreationForm,
             'error': 'Password do not match'
         })
-        
+
+@login_required        
 def tasks(request):
     return render(request, 'tasks.html')
 
+@login_required
 def signout(request):
     logout(request)
     return redirect('home')
