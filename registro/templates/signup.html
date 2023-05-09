@@ -2,14 +2,16 @@
 
 {% block content %}
 
-<h1 class="text-center">Registrate</h1>
 
 
 <main class="container">
     <div class="row">
-        <div class="col-md-4 offset-md-4">
+        <div class="col-md-4 offset-md-4 mt-5">
             <form action="/signup/" method="POST">
-                {{error}}
+                <h1 class="text-center">Registrate</h1>
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
                 {% csrf_token %}
             
                 <div class="mb-3">
